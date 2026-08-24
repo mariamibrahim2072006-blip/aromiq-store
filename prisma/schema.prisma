@@ -1,0 +1,142 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  phone     String?
+  role      UserRole @default(CUSTOMER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  cart      Cart?
+  orders    Order[]
+}
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
+}
+
+model Product {
+  id          Int        @id @default(autoincrement())
+  name        String
+  price       Float
+  image       String
+  category    String     @default("AROMIQ PERFUME")
+  description String?
+  createdAt   DateTime   @default(now())
+
+  cartItems   CartItem[]
+  orderItems  OrderItem[]
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  userId    String     @unique
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model CartItem {
+  id        String  @id @default(cuid())
+  cartId    String
+  productId Int
+  quantity  Int     @default(1)
+
+  cart      Cart    @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@unique([cartId, productId])
+}
+
+model Order {
+  id              String        @id @default(cuid())
+  userId          String
+
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items           OrderItem[]
+
+  firstName       String        @default("")
+  lastName        String        @default("")
+  email           String        @default("")
+  phone           String        @default("")
+  governorate     String        @default("")
+  city            String        @default("")
+  address         String        @default("")
+  apartment       String?
+  notes           String?
+
+  subtotal        Float
+  shipping        Float
+  discount        Float         @default(0)
+  total           Float
+
+  couponCode      String?
+
+  paymentMethod   String        @default("CASH_ON_DELIVERY")
+  paymentStatus   PaymentStatus @default(PENDING)
+  stripeSessionId String?
+
+  status          OrderStatus   @default(PENDING)
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  productId Int
+
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id])
+
+  name      String
+  price     Float
+  quantity  Int
+  image     String
+}
+
+model Coupon {
+  id          String     @id @default(cuid())
+  code        String     @unique
+  discount    Float
+  type        CouponType @default(PERCENTAGE)
+  minAmount   Float?
+  maxUses     Int?
+  usedCount   Int        @default(0)
+  active      Boolean    @default(true)
+  expiresAt   DateTime?
+  createdAt   DateTime   @default(now())
+}
+
+enum CouponType {
+  PERCENTAGE
+  FIXED
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PROCESSING
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  REFUNDED
+}
