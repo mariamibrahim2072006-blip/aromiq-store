@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import Stripe from "stripe";
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "./generated/prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 dotenv.config();
