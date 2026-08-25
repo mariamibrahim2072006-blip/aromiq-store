@@ -63,9 +63,9 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
-  "https://aromiq-store-production.up.railway.app",
+  "https://aromiq-store.vercel.app",
+  "https://aromiq-store-p6nbo9b5e-mariam-b9a6.vercel.app",
 ];
-
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin) {
