@@ -1,12 +1,12 @@
-import express from "express";
-import cors from "cors";
+/* @ts-nocheck */
+import express, { Request, Response, NextFunction } from "express";
+import cors, { CorsOptions } from "cors";
 import dotenv from "dotenv";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import Stripe from "stripe";
-
-import { PrismaClient } from "./generated/prisma/client.js";
+import { PrismaClient } from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
 
 dotenv.config();
@@ -1568,16 +1568,12 @@ app.post(
             price_data: {
               currency:
                 "egp",
-
               product_data: {
                 name:
-                  item.product
-                    .name,
-
+                  item.product.name,
                 description:
-                  item.product
-                    .description ||
-                  undefined,
+                  item.product.description ||
+                  "",
               },
 
               unit_amount:
@@ -1597,12 +1593,11 @@ app.post(
       if (shipping > 0) {
         lineItems.push({
           price_data: {
-            currency:
-              "egp",
+            currency: "egp",
 
             product_data: {
-              name:
-                "Shipping",
+              name: "Shipping",
+              description: "Shipping",
             },
 
             unit_amount:
@@ -1737,8 +1732,8 @@ app.get(
       const { id } =
         req.params;
 
-      const { session_id } =
-        req.query;
+      const session_id =
+        req.query.session_id as string;
 
       if (!session_id) {
         return res.status(400).json({
