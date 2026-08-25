@@ -6,8 +6,10 @@ import jwt from "jsonwebtoken";
 import nodemailer from "nodemailer";
 import Stripe from "stripe";
 
-import { PrismaClient } from "@prisma/client";
+import pkg from "@prisma/client";
 import { PrismaPg } from "@prisma/adapter-pg";
+
+const { PrismaClient } = pkg;
 
 dotenv.config();
 
@@ -69,8 +71,6 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: function (origin, callback) {
-    // Allow requests without an Origin header
-    // مثل Postman / server-to-server
     if (!origin) {
       return callback(null, true);
     }
@@ -105,8 +105,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
-// Handle browser preflight requests
-app.options("*", cors(corsOptions));
+app.use(express.json());
 
 /* =========================================================
    EMAIL
@@ -127,7 +126,6 @@ if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
 } else {
   console.log("⚠️ Email service not configured");
 }
-
 /* =========================================================
    HELPERS
 ========================================================= */
