@@ -60,19 +60,26 @@ const app = express();
    CORS
 ========================================================= */
 
+/* =========================================================
+   CORS
+========================================================= */
+
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
   "https://aromiq-store.vercel.app",
-  "https://aromiq-store-p6nbo9b5e-mariam-b9a6.vercel.app",
 ];
-const corsOptions = {
+
+const corsOptions: CorsOptions = {
   origin: function (origin, callback) {
     if (!origin) {
       return callback(null, true);
     }
 
-    if (allowedOrigins.includes(origin)) {
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.endsWith(".vercel.app")
+    ) {
       return callback(null, true);
     }
 
@@ -101,7 +108,6 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
 app.use(express.json());
 
 /* =========================================================
