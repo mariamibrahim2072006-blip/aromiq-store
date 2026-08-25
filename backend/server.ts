@@ -14,7 +14,7 @@ dotenv.config();
    CONFIG
 ========================================================= */
 
-const PORT = process.env.PORT || 5000;
+const PORT = Number(process.env.PORT) || 5000;
 const JWT_SECRET = process.env.JWT_SECRET;
 
 if (!JWT_SECRET) {
@@ -2867,9 +2867,9 @@ async function startServer() {
     console.log(
       "✅ PostgreSQL connected successfully"
     );
-
     app.listen(
       PORT,
+      "0.0.0.0",
       () => {
         console.log(
           `✨ Aromiq API running on http://localhost:${PORT}`
