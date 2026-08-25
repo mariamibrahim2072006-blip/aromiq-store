@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ShoppingBag, Check } from "lucide-react";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "https://charming-bravery-production-9bdf.up.railway.app";
 
 export default function ProductDetails() {
     const { id } = useParams();

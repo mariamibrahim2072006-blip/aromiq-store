@@ -9,7 +9,7 @@ import {
     Sparkles,
 } from "lucide-react";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://charming-bravery-production-9bdf.up.railway.app/api";
 
 export default function Account() {
     const navigate = useNavigate();
