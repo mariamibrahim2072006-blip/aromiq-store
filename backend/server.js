@@ -64,6 +64,7 @@ const app = express();
 const allowedOrigins = [
   "http://localhost:5173",
   "http://localhost:5174",
+  "https://aromiq-store-production.up.railway.app",
 ];
 
 app.use(
