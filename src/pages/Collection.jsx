@@ -222,14 +222,6 @@ export default function Collection() {
                                 mood, memory and personality.
                             </p>
 
-                            <Link
-                                to="/collection"
-                                className="inline-flex items-center gap-3 mt-8 bg-[#260304] text-[#F7EFE8] px-7 py-4 text-xs uppercase tracking-[0.2em] font-bold hover:bg-[#3b1214] transition shadow-sm"
-                            >
-                                Shop All Fragrances
-                                <ArrowRight size={16} />
-                            </Link>
-
                         </div>
 
                         {/* BURGUNDY PERFUME HERO */}
@@ -531,4 +523,6 @@ export default function Collection() {
         </main>
     );
 }
+
+
 
