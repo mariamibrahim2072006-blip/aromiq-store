@@ -300,6 +300,40 @@ export default function Account() {
 
                         </div>
 
+                        {/* MY ORDERS */}
+
+                        <div className="mt-6 bg-white border border-[#E8E1D7] p-8 lg:p-10">
+
+                            <div className="w-12 h-12 rounded-full bg-[#F5F0E6] flex items-center justify-center">
+                                <ArrowRight
+                                    size={20}
+                                    strokeWidth={1.3}
+                                    className="text-[#260304]"
+                                />
+                            </div>
+
+                            <p className="mt-8 text-[9px] uppercase tracking-[0.3em] text-[#8C7A6B] font-bold">
+                                YOUR ORDERS
+                            </p>
+
+                            <h2 className="mt-3 text-2xl font-serif text-[#260304]">
+                                My Orders
+                            </h2>
+
+                            <p className="mt-4 text-sm leading-7 text-[#5E5148]">
+                                View your orders, products, totals and order status.
+                            </p>
+
+                            <Link
+                                to="/orders"
+                                className="inline-flex items-center gap-3 mt-7 bg-[#260304] text-[#FDFBF7] px-6 py-3 text-[10px] uppercase tracking-[0.2em] font-bold hover:bg-[#3b1214] transition"
+                            >
+                                View My Orders
+                                <ArrowRight size={14} />
+                            </Link>
+
+                        </div>
+
 
                         {/* LOGOUT */}
 
@@ -539,3 +573,4 @@ export default function Account() {
         </main>
     );
 }
+
