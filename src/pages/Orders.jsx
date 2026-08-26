@@ -108,7 +108,7 @@ export default function Orders() {
                         </p>
 
                         <Link
-                            to="/shop"
+                            to="/collection"
                             className="inline-block mt-7 bg-[#260304] text-white px-8 py-4 text-xs uppercase tracking-[0.2em]"
                         >
                             Explore Collection
@@ -201,3 +201,4 @@ export default function Orders() {
         </section>
     );
 }
+

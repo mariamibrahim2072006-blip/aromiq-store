@@ -85,7 +85,7 @@ export default function About() {
             </p>
 
             <Link
-              to="/shop"
+              to="/collection"
               className="inline-flex items-center gap-3 mt-9 bg-[#F5F0E6] text-[#260304] px-7 py-4 text-sm font-bold uppercase tracking-wider hover:bg-white transition"
             >
               Discover Collection
@@ -289,7 +289,7 @@ export default function About() {
             </p>
 
             <Link
-              to="/shop"
+              to="/collection"
               className="inline-flex items-center gap-3 mt-8 border border-[#260304] text-[#260304] px-7 py-3.5 uppercase tracking-wider text-sm font-bold hover:bg-[#260304] hover:text-[#F7EFE8] transition"
             >
               Explore Perfumes
@@ -574,7 +574,7 @@ export default function About() {
           </p>
 
           <Link
-            to="/shop"
+            to="/collection"
             className="inline-flex items-center gap-3 mt-9 bg-[#F5F0E6] text-[#260304] px-9 py-4 font-bold uppercase tracking-wider hover:bg-white transition"
           >
             Shop Collection
@@ -588,3 +588,4 @@ export default function About() {
     </div>
   );
 }
+

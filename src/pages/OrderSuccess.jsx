@@ -120,7 +120,7 @@ export default function OrderSuccess() {
                     </Link>
 
                     <Link
-                        to="/shop"
+                        to="/collection"
                         className="inline-flex items-center justify-center border border-[#260304] text-[#260304] px-7 py-4 text-xs uppercase tracking-[0.2em] font-bold hover:bg-[#F5F0E6] transition"
                     >
                         Continue Shopping
@@ -132,3 +132,4 @@ export default function OrderSuccess() {
         </main>
     );
 }
+

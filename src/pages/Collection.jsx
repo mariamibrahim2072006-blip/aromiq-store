@@ -223,7 +223,7 @@ export default function Collection() {
                             </p>
 
                             <Link
-                                to="/shop"
+                                to="/collection"
                                 className="inline-flex items-center gap-3 mt-8 bg-[#260304] text-[#F7EFE8] px-7 py-4 text-xs uppercase tracking-[0.2em] font-bold hover:bg-[#3b1214] transition shadow-sm"
                             >
                                 Shop All Fragrances
@@ -453,7 +453,7 @@ export default function Collection() {
 
                             <Link
                                 key={item.title}
-                                to="/shop"
+                                to="/collection"
                                 className="group relative h-[280px] rounded-xl overflow-hidden"
                             >
 
@@ -517,7 +517,7 @@ export default function Collection() {
                     </p>
 
                     <Link
-                        to="/shop"
+                        to="/collection"
                         className="inline-flex items-center gap-3 mt-8 bg-[#F5F0E6] text-[#260304] px-8 py-4 text-xs uppercase tracking-[0.2em] font-bold hover:bg-white transition shadow-sm"
                     >
                         Explore Collection
@@ -531,3 +531,4 @@ export default function Collection() {
         </main>
     );
 }
+

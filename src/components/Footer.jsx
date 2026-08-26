@@ -107,7 +107,7 @@ export default function Footer() {
               </Link>
 
               <Link
-                to="/shop"
+                to="/collection"
                 className="hover:text-[#D8AA36] transition-colors"
               >
                 The Collection
@@ -207,3 +207,4 @@ export default function Footer() {
     </footer>
   );
 }
+
