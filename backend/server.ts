@@ -1308,7 +1308,7 @@ app.post(
 
       if (transporter) {
         try {
-          await transporter.sendMail({
+          transporter.sendMail({
             from:
               `"AROMIQ" <${process.env.EMAIL_USER}>`,
 
@@ -2915,4 +2915,5 @@ process.on(
     process.exit(0);
   }
 );
+
 
