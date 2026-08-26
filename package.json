@@ -10,6 +10,7 @@
     "start": "tsx backend/server.ts",
     "db:generate": "prisma generate",
     "db:validate": "prisma validate",
+    "db:push": "prisma db push",
     "postinstall": "prisma generate"
   },
   "dependencies": {
