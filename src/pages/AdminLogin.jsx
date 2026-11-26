@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminLogin.css";
 
-const API_URL = "https://aromiq-store-production.up.railway.app";
+const API_URL = "";
 
 export default function AdminLogin() {
     const navigate = useNavigate();
