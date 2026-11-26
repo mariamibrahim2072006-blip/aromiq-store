@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./AdminDashboard.css";
 
-const API_URL = "https://aromiq-store-production.up.railway.app";
+const API_URL = "";
 
 export default function AdminDashboard() {
     const navigate = useNavigate();
