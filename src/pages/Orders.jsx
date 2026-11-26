@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const API_URL = "https://aromiq-store-production.up.railway.app";
+const API_URL = "";
 
 export default function Orders() {
     const [orders, setOrders] = useState([]);
