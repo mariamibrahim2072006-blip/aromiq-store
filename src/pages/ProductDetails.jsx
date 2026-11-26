@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import { ArrowLeft, ShoppingBag, Check } from "lucide-react";
 
-const API_URL = "https://aromiq-store-production.up.railway.app";
+const API_URL = "";
 
 export default function ProductDetails() {
     const { id } = useParams();
