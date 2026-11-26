@@ -1,11 +1,15 @@
 generator client {
-  provider = "prisma-client"
-  output   = "../backend/generated/prisma"
-}
-datasource db {
-  provider = "postgresql"
+  provider            = "prisma-client"
+  output              = "../backend/generated/prisma"
+  moduleFormat        = "esm"
+  runtime             = "nodejs"
+  importFileExtension = "ts"
 }
 
+datasource db {
+  provider = "postgresql"
+ 
+}
 model User {
   id        String   @id @default(cuid())
   name      String
@@ -18,11 +22,6 @@ model User {
 
   cart      Cart?
   orders    Order[]
-}
-
-enum UserRole {
-  CUSTOMER
-  ADMIN
 }
 
 model Product {
@@ -118,6 +117,11 @@ model Coupon {
   active      Boolean    @default(true)
   expiresAt   DateTime?
   createdAt   DateTime   @default(now())
+}
+
+enum UserRole {
+  CUSTOMER
+  ADMIN
 }
 
 enum CouponType {
