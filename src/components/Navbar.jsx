@@ -8,7 +8,7 @@ import {
   Menu,
 } from "lucide-react";
 
-const API_URL = "https://aromiq-store-production.up.railway.app";
+const API_URL = "";
 
 export default function Navbar() {
   const [searchOpen, setSearchOpen] = useState(false);
