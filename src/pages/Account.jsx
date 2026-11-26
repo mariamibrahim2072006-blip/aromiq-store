@@ -9,7 +9,7 @@ import {
     Sparkles,
 } from "lucide-react";
 
-const API_URL = "https://aromiq-store-production.up.railway.app/api";
+const API_URL = "/api";
 
 export default function Account() {
     const navigate = useNavigate();
