@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import {
   Sparkles,
@@ -34,13 +35,66 @@ const perfumeProducts = [
 ];
 
 function PerfumeVideo({ src, className = "" }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const v = ref.current;
+    if (!v) return;
+    v.muted = true;
+    v.defaultMuted = true;
+    v.setAttribute("muted", "");
+    v.setAttribute("playsinline", "");
+    v.setAttribute("webkit-playsinline", "");
+
+    const tryPlay = () => {
+      if (v.paused) {
+        const p = v.play();
+        if (p && p.catch) p.catch(() => {});
+      }
+    };
+
+    tryPlay();
+    v.addEventListener("loadeddata", tryPlay);
+    v.addEventListener("canplay", tryPlay);
+
+    let io;
+    if ("IntersectionObserver" in window) {
+      io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) tryPlay();
+          });
+        },
+        { threshold: 0.1 }
+      );
+      io.observe(v);
+    }
+
+    const onTouch = () => tryPlay();
+    window.addEventListener("touchstart", onTouch, { passive: true });
+    window.addEventListener("click", onTouch);
+    window.addEventListener("scroll", onTouch, { passive: true });
+
+    return () => {
+      v.removeEventListener("loadeddata", tryPlay);
+      v.removeEventListener("canplay", tryPlay);
+      if (io) io.disconnect();
+      window.removeEventListener("touchstart", onTouch);
+      window.removeEventListener("click", onTouch);
+      window.removeEventListener("scroll", onTouch);
+    };
+  }, [src]);
+
   return (
     <video
+      ref={ref}
       autoPlay
       muted
       loop
       playsInline
       preload="auto"
+      disablePictureInPicture
+      disableRemotePlayback
       className={`w-full h-full object-cover ${className}`}
     >
       <source src={src} type="video/mp4" />
